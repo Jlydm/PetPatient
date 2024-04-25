@@ -10,7 +10,8 @@ export default function PatientForm() {
   /* On this way to declare the function we destructuring and we callback addPatient
   const { addPatient } = usePatientStore(); */
   // This is the other way of callback the function declared
-  const addPatient = usePatientStore(state => state.addPatient) 
+  // Function to add new patiente
+  const addPatient = usePatientStore(state => state.addPatient)
   const {
     register,
     handleSubmit,
