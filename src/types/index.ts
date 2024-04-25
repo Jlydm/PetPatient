@@ -3,9 +3,9 @@ export type Patient = {
   name: string
   caretaker: string
   email: string
-  data: Date
+  date: Date
   symptoms: string 
 }
 
-// That type copied the type patient and omit the id
+// This type copied the type patient and omit the id
 export type DraftPatient = Omit<Patient, 'id'>

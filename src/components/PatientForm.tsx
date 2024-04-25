@@ -1,16 +1,26 @@
 import { useForm } from "react-hook-form";
 import Error from "./Error";
 import { DraftPatient } from "../types";
+// 1. We import the declared custom hook 
+import { usePatientStore } from "../store";
 
 export default function PatientForm() {
+
+  // 2. 
+  /* On this way to declare the function we destructuring and we callback addPatient
+  const { addPatient } = usePatientStore(); */
+  // This is the other way of callback the function declared
+  const addPatient = usePatientStore(state => state.addPatient) 
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<DraftPatient>();
 
+  // The input of the form
   const registerPatient = (data: DraftPatient) => {
-    console.log(data);
+    // 3. We call the function
+    addPatient(data)
   };
 
   return (
@@ -96,7 +106,7 @@ export default function PatientForm() {
             id="date"
             className="w-full p-3 border border-gray-100"
             type="date"
-            {...register("date", {
+            {...register('date', {
               required: "La fecha de alta es obligatoria",
             })}
           />
