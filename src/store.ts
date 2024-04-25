@@ -7,7 +7,10 @@ type PatientState = {
   // This is the state and the funtions that modify the state
   patients: Patient[]
   // Here we declare a function... ↓
+  // Function to add new patient
   addPatient: (data: DraftPatient) => void
+  // Funtion to delete a patient
+  deletePatient: (id: Patient['id']) => void
 }
 
 // We can write the login on the set of the function or create a function to do that
@@ -27,6 +30,12 @@ export const usePatientStore = create<PatientState>((set) => ({
     set((state) => ({
       // Here we writing in patients, copi the state of patients and we passed data
       patients: [...state.patients, newPatient]
+    }))
+  }, 
+  deletePatient: (id) => {
+
+    set((state) => ({
+      patients: state.patients.filter( patient => patient.id !== id )
     }))
   }
 }))

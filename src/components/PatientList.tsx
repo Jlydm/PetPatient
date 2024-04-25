@@ -5,7 +5,6 @@ export default function PatientList() {
 
   // This function use the state in usePatientStore
   const patients = usePatientStore(state => state.patients)
-  console.log(patients)
   return (
     <div className="md:-1/2 lg:3/5 md:h-screen overflow-y-scroll">
       {/* ternary operator (... ? ... : ...) */}
